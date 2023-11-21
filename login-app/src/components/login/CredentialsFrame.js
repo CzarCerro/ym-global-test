@@ -62,6 +62,10 @@ function CredentialsFrame() {
             if (error.response) {
                 setMessage(error.response.data)
                 handleShowMessage()
+            } 
+            else {
+                setMessage("Error. It is possible that the server is down.")
+                handleShowMessage()
             }
         }
     };
@@ -71,7 +75,7 @@ function CredentialsFrame() {
             {showMessage && <Message handleShowMessage={handleShowMessage} message={message} />}
             {!isSignUp ? <Login handleLogin={handleLogin} handleEmailChange={handleEmailChange} handlePasswordChange={handlePasswordChange} handleSetIsSignUp={handleSetIsSignUp} />
                 :
-                <Register handleSetIsSignUp={handleSetIsSignUp} handleErrorMessage={handleMessage} handleShowPopup={handleShowMessage} />}
+                <Register handleSetIsSignUp={handleSetIsSignUp} handleMessage={handleMessage} handleShowMessage={handleShowMessage} />}
         </div>
     );
 }

@@ -17,8 +17,7 @@ function ManagerPage() {
     }
   }, [navigate]);
 
-  const handleGoBack = () => {
-    // Navigate to the '/welcome' route
+  const handleClick = () => {
     navigate('/welcome');
   };
 
@@ -31,7 +30,7 @@ function ManagerPage() {
             Welcome to the manager page
           </span>
         </div>
-        <button onClick={handleGoBack}>Go Back</button>
+        <button onClick={handleClick}>Go Back</button>
       </div>
     </PageFrame>
   );

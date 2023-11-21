@@ -9,3 +9,17 @@
   .WelcomeMessage {
     font-size: 3.5rem;
   }
+
+  .ManagerPage  button {
+    background-color: #2761ff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .ManagerPage button:hover {
+    background-color: #2761ff;
+  }

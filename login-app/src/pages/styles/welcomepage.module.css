@@ -6,6 +6,20 @@
     padding-top: 2rem;
   }
 
+  .WelcomePage  button {
+    background-color: #2761ff;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  .WelcomePage button:hover {
+    background-color: #2761ff;
+  }
+
   .WelcomeMessage {
     font-size: 3.5rem;
   }

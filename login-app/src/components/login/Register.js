@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import styles from './styles/register.module.css';
 import axios from 'axios';
 
-function Register({ handleSetIsSignUp, handleErrorMessage, handleShowPopup }) {
+function Register({ handleSetIsSignUp, handleMessage, handleShowMessage }) {
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -22,18 +22,19 @@ function Register({ handleSetIsSignUp, handleErrorMessage, handleShowPopup }) {
       const response = await axios.post('http://localhost:8080/user/register', formData);
 
       if (response.status === 200) {
-        handleErrorMessage("User successfully created");
-        handleShowPopup();
+        handleMessage("User successfully created");
+        handleShowMessage();
       } else {
         console.log('Registration failed');
       }
     } catch (error) {
       if (error.response) {
-        handleErrorMessage(error.response.data);
-        handleShowPopup();
-      } else {
-        console.error(error);
-      }
+        handleMessage(error.response.data);
+        handleShowMessage();
+       } else {
+        handleMessage("Error. Ensure that the spring boot server is up.")
+        handleShowMessage()
+        }
     }
   };
 
