@@ -16,11 +16,13 @@ function WelcomePage() {
     const storedEmail = localStorage.getItem('email');
     const storedRole = localStorage.getItem('role');
 
+    if (storedName && storedUsername && storedEmail && storedRole){
+      setName(storedName);
+      setUsername(storedUsername);
+      setEmail(storedEmail);
+      setRole(storedRole);
+    }
 
-    if (storedName) setName(storedName);
-    if (storedUsername) setUsername(storedUsername);
-    if (storedEmail) setEmail(storedEmail);
-    if (storedRole) setRole(storedRole);
   }, []); 
 
   return (

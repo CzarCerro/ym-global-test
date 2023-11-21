@@ -3,11 +3,15 @@ import styles from './styles/credentialsframe.module.css'
 import Login from './Login';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Register from './Register';
+import ErrorMessage from '../error/ErrorMessage';
 
 function CredentialsFrame() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isSignedUp, setIsSignedUp] = useState(false);
+    const [isSignUp, setIsSignUp] = useState(false);
+    const [showError, setShowError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState('');
 
     const navigate = useNavigate();
 
@@ -17,6 +21,14 @@ function CredentialsFrame() {
 
       const handlePasswordChange = (e) => {
         setPassword(e.target.value);
+      };
+
+      const handleSetIsSignUp = () => {
+        setIsSignUp(!isSignUp);
+      };
+
+      const handleSetShowError = () => {
+        setShowError(!showError);
       };
 
       const handleLogin = async (e) => {
@@ -43,13 +55,17 @@ function CredentialsFrame() {
             console.log('Login failed');
           }
         } catch (error) {
-          console.error('Error:', error.message);
+          if (error.response) {
+            setErrorMessage(error.response.data)
+            handleSetShowError()
+          }
         }
       };
 
   return (
     <div className={styles.CredentialsFrame}>
-        <Login handleLogin={handleLogin} handleEmailChange={handleEmailChange} handlePasswordChange={handlePasswordChange}/>
+        {showError? <ErrorMessage handleSetShowError={handleSetShowError} errorMessage={errorMessage}/> : null}
+        {!isSignUp ? <Login handleLogin={handleLogin} handleEmailChange={handleEmailChange} handlePasswordChange={handlePasswordChange} handleSetIsSignUp={handleSetIsSignUp}/> : <Register handleSetIsSignUp={handleSetIsSignUp}/>}
     </div>
   );
 }
