@@ -39,7 +39,7 @@ public class UserServiceImpl implements UserService {
         // Check if user exists
         if (user == null) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("User with email " + loginModel.getEmail() + " not found");
+                    .body("User does not exist");
         }
 
         // Check if the password matches
@@ -48,10 +48,8 @@ public class UserServiceImpl implements UserService {
                     .body("Incorrect password for user with email " + loginModel.getEmail());
         }
 
-        // Login successful
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.OK).body(new UserModel(user.getUsername(), user.getName(), user.getEmail(), user.getRole()));
     }
-
 
     @Override
     public List<User> getUsers() {

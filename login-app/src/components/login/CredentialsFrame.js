@@ -5,7 +5,7 @@ import Login from './Login';
 function CredentialsFrame() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const [isSignUp, setIsSignUp] = useState(false);
+    const [isSignedUp, setIsSignedUp] = useState(false);
 
     const handleEmailChange = (e) => {
         setEmail(e.target.value);
