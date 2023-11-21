@@ -1,11 +1,14 @@
 import React from 'react';
+import PageFrame from '../components/common/page/PageFrame';
 
 
 function WelcomePage() {
   return (
-    <div>
-        Welcome
-    </div>
+    <PageFrame>
+      <div>
+          Welcome
+      </div>
+    </PageFrame>
   );
 }
 

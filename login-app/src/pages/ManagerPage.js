@@ -1,11 +1,13 @@
 import React from 'react';
-
+import PageFrame from '../components/common/page/PageFrame';
 
 function ManagerPage() {
   return (
-    <div>
-        Manager
-    </div>
+    <PageFrame>
+      <div>
+          Manager
+      </div>
+    </PageFrame>
   );
 }
 
