@@ -1,0 +1,11 @@
+.ManagerPage {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+    padding-top: 2rem;
+  }
+
+  .WelcomeMessage {
+    font-size: 3.5rem;
+  }

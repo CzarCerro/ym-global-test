@@ -1,50 +1,63 @@
-// components/Login.js
-
 import React, { useState } from 'react';
-import styles from './styles/register.module.css'
-import Login from './Login';
+import styles from './styles/register.module.css';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
 
-function Register({handleSetIsSignUp}) {
-    const [email, setEmail] = useState('');
-    const [name, setName] = useState('');
-    const [password, setPassword] = useState('');
-    const [role, setRole] = useState('');
+function Register({ handleSetIsSignUp, handleErrorMessage, handleShowPopup }) {
+  const [formData, setFormData] = useState({
+    username: '',
+    email: '',
+    name: '',
+    password: '',
+    role: '',
+  });
 
-    const handleEmailChange = (e) => {
-        setEmail(e.target.value);
-      };
+  const handleInputChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
-      const handlePasswordChange = (e) => {
-        setPassword(e.target.value);
-      };
+  const handleRegister = async (e) => {
+    e.preventDefault();
 
-      const handleRoleChange = (event) => {
-        setRole(event.target.value);
-      };
-    
-      const handleRegister = async (e) => {
-        e.preventDefault();
-      };
+    try {
+      const response = await axios.post('http://localhost:8080/user/register', formData);
+
+      if (response.status === 200) {
+        handleErrorMessage("User successfully created");
+        handleShowPopup();
+      } else {
+        console.log('Registration failed');
+      }
+    } catch (error) {
+      if (error.response) {
+        handleErrorMessage(error.response.data);
+        handleShowPopup();
+      } else {
+        console.error(error);
+      }
+    }
+  };
 
   return (
     <div className={styles.Register}>
       <h2>Register</h2>
       <div className={styles.Signup}>
         <p>Already have an account?</p>
-        <p style={{cursor: 'pointer', color: '#83A2FF', textDecoration: 'underline'}} onClick={handleSetIsSignUp}>Login</p>
+        <p style={{ cursor: 'pointer', color: '#83A2FF', textDecoration: 'underline' }} onClick={handleSetIsSignUp}>
+          Login
+        </p>
       </div>
       <form onSubmit={handleRegister}>
+        <span>Username</span>
+        <input type="text" name="username" onChange={handleInputChange} value={formData.username} required />
         <span>Email</span>
-        <input type="email" onChange={handleEmailChange} required />
+        <input type="email" name="email" onChange={handleInputChange} value={formData.email} required />
         <span>Name</span>
-        <input type="name" onChange={handleEmailChange} required />
+        <input type="text" name="name" onChange={handleInputChange} value={formData.name} required />
         <span>Password</span>
-        <input type="password" onChange={handlePasswordChange} required />
+        <input type="password" name="password" onChange={handleInputChange} value={formData.password} required />
         <span>Role</span>
-        <select onChange={handleRoleChange} required>
-          <option value="" disabled selected>
+        <select name="role" onChange={handleInputChange} value={formData.role} required>
+          <option value="" disabled>
             Select a role
           </option>
           <option value="USER">User</option>
