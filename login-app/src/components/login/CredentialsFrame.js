@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './styles/credentialsframe.module.css'
 import Login from './Login';
+import axios from 'axios';
 
 function CredentialsFrame() {
     const [email, setEmail] = useState('');
@@ -15,11 +16,21 @@ function CredentialsFrame() {
         setPassword(e.target.value);
       };
 
-      const handleLogin = (e) => {
+      const handleLogin = async (e) => {
         e.preventDefault();
-        // Add your logic for handling form submission here
-        console.log('Email:', email);
-        console.log('Password:', password);
+    
+        try {
+          const response = await axios.post('http://localhost:8080/user/login', {
+            email: email,
+            password: password,
+          });
+    
+
+          console.log('Response:', response.data);
+        } catch (error) {
+
+          console.error('Error:', error.message);
+        }
       };
 
   return (

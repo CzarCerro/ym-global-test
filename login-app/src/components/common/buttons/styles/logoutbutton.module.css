@@ -1,0 +1,12 @@
+.LogoutButton{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    font-weight: bold;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+.LogoutButton span{
+    color: #ffbaba;
+}

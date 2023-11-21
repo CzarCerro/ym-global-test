@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/user")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LoginController {
 
     private final UserService userService;
@@ -26,11 +27,6 @@ public class LoginController {
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         return userService.registerUser(user);
-    }
-
-    @PostMapping("/logout")
-    public ResponseEntity<?> logout() {
-        return ResponseEntity.status(200).build();
     }
 
     @GetMapping("/getUsers")
