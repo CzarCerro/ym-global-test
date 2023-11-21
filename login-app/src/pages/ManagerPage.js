@@ -1,12 +1,15 @@
 import React from 'react';
 import PageFrame from '../components/common/page/PageFrame';
+import Navbar from '../components/navbar/Navbar';
 
 function ManagerPage() {
   return (
     <PageFrame>
-      <div>
-          Manager
-      </div>
+      <Navbar>
+        <div>
+            Manager
+        </div>
+      </Navbar>
     </PageFrame>
   );
 }

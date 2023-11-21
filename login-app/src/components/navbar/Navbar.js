@@ -1,4 +1,4 @@
-import LogoutButton from '../buttons/LogoutButton';
+import LogoutButton from '../common/buttons/LogoutButton';
 import styles from './styles/navbar.module.css'
 
 function Navbar() {

@@ -13,10 +13,10 @@ function ProfileCard({username, email, name, role}) {
             <span>Role:</span>
           </div>
           <div className={styles.Details}>
-            <span>PLACEHOLDER</span>
-            <span>PLACEHOLDER</span>
-            <span>PLACEHOLDER</span>
-            <span>USER</span>
+            <span>{username}</span>
+            <span>{email}</span>
+            <span>{name}</span>
+            <span>{role}</span>
           </div>
       </div>
   );

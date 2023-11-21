@@ -1,0 +1,11 @@
+.Footbar{
+    background-color: #1a1c21;
+    height: 3rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-left: 5rem;
+    padding-right: 2rem;
+    justify-content: end;
+    align-items: center;
+    display: flex;
+}

@@ -1,10 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PageFrame from '../components/common/page/PageFrame';
 import styles from './styles/welcomepage.module.css'
 import ProfileCard from '../components/profile/ProfileCard';
-import Navbar from '../components/common/navbar/Navbar';
+import Navbar from '../components/navbar/Navbar';
 
 function WelcomePage() {
+  const [name, setName] = useState('');
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [role, setRole] = useState('');
+
+  useEffect(() => {
+    const storedName = localStorage.getItem('name');
+    const storedUsername = localStorage.getItem('username');
+    const storedEmail = localStorage.getItem('email');
+    const storedRole = localStorage.getItem('role');
+
+
+    if (storedName) setName(storedName);
+    if (storedUsername) setUsername(storedUsername);
+    if (storedEmail) setEmail(storedEmail);
+    if (storedRole) setRole(storedRole);
+  }, []); 
 
   return (
     <PageFrame>
@@ -12,10 +29,10 @@ function WelcomePage() {
         <div className={styles.WelcomePage}> 
           <div className={styles.WelcomeMessage}>
             <span>
-                Welcome, NAME HERE
+                Welcome, {name}
             </span>
           </div>
-          <ProfileCard/>
+          <ProfileCard username={username} email={email} name={name} role={role}/>
         </div>
     </PageFrame>
   );
