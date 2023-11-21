@@ -10,10 +10,10 @@ function Login({ handleLogin, handleEmailChange, handlePasswordChange }) {
                 <p>Sign up</p>
             </div>
             <form onSubmit={handleLogin}>
-                <p>Email</p>
+                <span>Email</span>
                 <input type="email" onChange={handleEmailChange} required />
                 <br />
-                <p>Password</p>
+                <span>Password</span>
                 <input type="password" onChange={handlePasswordChange} required />
                 <br />
                 <button type="submit">Submit</button>
