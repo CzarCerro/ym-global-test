@@ -8,4 +8,5 @@
     justify-content: end;
     align-items: center;
     display: flex;
+    gap: 3rem;
 }

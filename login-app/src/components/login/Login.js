@@ -2,21 +2,23 @@
 
 import React from 'react';
 import styles from './styles/login.module.css';
+import { useTranslation } from 'react-i18next';
 
 function Login({ handleLogin, handleEmailChange, handlePasswordChange, handleSetIsSignUp }) {
+  const { t, i18n } = useTranslation();
   return (
     <div className={styles.Login}>
-      <h2>Login</h2>
+      <h2>{t('Login')}</h2>
       <div className={styles.Signup}>
-        <p>Don't have an account yet?</p>
-        <p style={{cursor: 'pointer', color: '#83A2FF', textDecoration: 'underline'}} onClick={handleSetIsSignUp}>Sign up</p>
+        <p>{t("Don't have an account yet?")}</p>
+        <p style={{cursor: 'pointer', color: '#83A2FF', textDecoration: 'underline'}} onClick={handleSetIsSignUp}>{t("Sign Up")}</p>
       </div>
       <form onSubmit={handleLogin}>
-        <span>Email</span>
+        <span>{t('Email')}</span>
         <input type="email" onChange={handleEmailChange} required />
-        <span>Password</span>
+        <span>{t('Password')}</span>
         <input type="password" onChange={handlePasswordChange} required />
-        <button type="submit">Submit</button>
+        <button type="submit">{t('Submit')}</button>
       </form>
     </div>
   );

@@ -5,6 +5,8 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Register from './Register';
 import Message from '../error/Message';
+import ChangeLanguageButton from '../common/buttons/ChangeLanguageButton';
+
 
 function CredentialsFrame() {
     const [email, setEmail] = useState('');
@@ -64,7 +66,7 @@ function CredentialsFrame() {
                 handleShowMessage()
             } 
             else {
-                setMessage("Error. It is possible that the server is down.")
+                setMessage("Error. Ensure that the spring boot server is up.")
                 handleShowMessage()
             }
         }
@@ -72,10 +74,13 @@ function CredentialsFrame() {
 
     return (
         <div className={styles.CredentialsFrame}>
+            <div>
             {showMessage && <Message handleShowMessage={handleShowMessage} message={message} />}
             {!isSignUp ? <Login handleLogin={handleLogin} handleEmailChange={handleEmailChange} handlePasswordChange={handlePasswordChange} handleSetIsSignUp={handleSetIsSignUp} />
                 :
                 <Register handleSetIsSignUp={handleSetIsSignUp} handleMessage={handleMessage} handleShowMessage={handleShowMessage} />}
+                <ChangeLanguageButton/>
+                </div>
         </div>
     );
 }

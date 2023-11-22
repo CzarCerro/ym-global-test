@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
 import styles from './styles/register.module.css';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 
 function Register({ handleSetIsSignUp, handleMessage, handleShowMessage }) {
+  const { t, i18n } = useTranslation();
   const [formData, setFormData] = useState({
     username: '',
     email: '',
@@ -40,31 +42,31 @@ function Register({ handleSetIsSignUp, handleMessage, handleShowMessage }) {
 
   return (
     <div className={styles.Register}>
-      <h2>Register</h2>
+      <h2>{t('Register')}</h2>
       <div className={styles.Signup}>
-        <p>Already have an account?</p>
+        <p>{t('Already have an account?')}</p>
         <p style={{ cursor: 'pointer', color: '#83A2FF', textDecoration: 'underline' }} onClick={handleSetIsSignUp}>
-          Login
+        {t('Login')}
         </p>
       </div>
       <form onSubmit={handleRegister}>
-        <span>Username</span>
+        <span>{t('Username')}</span>
         <input type="text" name="username" onChange={handleInputChange} value={formData.username} required />
-        <span>Email</span>
+        <span>{t('Email')}</span>
         <input type="email" name="email" onChange={handleInputChange} value={formData.email} required />
-        <span>Name</span>
+        <span>{t('Name')}</span>
         <input type="text" name="name" onChange={handleInputChange} value={formData.name} required />
-        <span>Password</span>
+        <span>{t('Password')}</span>
         <input type="password" name="password" onChange={handleInputChange} value={formData.password} required />
-        <span>Role</span>
+        <span>{t('Role')}</span>
         <select name="role" onChange={handleInputChange} value={formData.role} required>
           <option value="" disabled>
-            Select a role
+            {t('Select a role')}
           </option>
-          <option value="USER">User</option>
-          <option value="MANAGER">Manager</option>
+          <option value="USER">{t('User')}</option>
+          <option value="MANAGER">{t('Manager')}</option>
         </select>
-        <button type="submit">Submit</button>
+        <button type="submit">{t('Submit')}</button>
       </form>
     </div>
   );
